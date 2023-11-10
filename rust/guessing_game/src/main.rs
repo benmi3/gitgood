@@ -45,6 +45,7 @@ fn check_guess(guess_number: u32, secret_number: &u32) -> bool {
         }
         Ordering::Equal => {
             println!("You win!");
+            println!("YAY!");
             true
         }
     }
