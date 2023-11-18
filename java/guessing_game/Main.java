@@ -35,6 +35,8 @@ public class Main {
 	      continue;
 	  }
       }
+      // stop scanner
+      scan.close();
       // The loop has broken
       // which means the correct answer was given
       System.out.println("You win!"); 
