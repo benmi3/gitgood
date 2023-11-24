@@ -31,7 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    "polls.apps.PollsConfig",       # Polls
+    'debug_toolbar',                # For debug
+    'polls.apps.PollsConfig',       # Polls
     'django.contrib.admin',         # Default
     'django.contrib.auth',          # Default
     'django.contrib.contenttypes',  # Default
@@ -41,13 +42,15 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.security.SecurityMiddleware',            # Default
+    'django.contrib.sessions.middleware.SessionMiddleware',     # Default
+    'django.middleware.common.CommonMiddleware',                # Default
+    'django.middleware.csrf.CsrfViewMiddleware',                # Default
+    'django.contrib.auth.middleware.AuthenticationMiddleware',  # Default
+    'django.contrib.messages.middleware.MessageMiddleware',     # Default
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',   # Default
+    # If you add enocing middleware ex GZipMiddleware, add before this
+    'debug_toolbar.middleware.DebugToolbarMiddleware',         # For debug
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -55,7 +58,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -106,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/Tokyo' # Default UTC
+TIME_ZONE = 'Asia/Tokyo'  # Default UTC
 
 USE_I18N = True
 
@@ -122,3 +125,15 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# internal ip
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+"""
+# If using Docker the following will set your INTERNAL_IPS correctly in Debug mode:
+if DEBUG:
+    import socket  # only if you haven't already imported this
+    hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+    INTERNAL_IPS = [ip[: ip.rfind(".")] + ".1" for ip in ips] + ["127.0.0.1", "10.0.2.2"]
+"""
