@@ -1,3 +1,9 @@
 [submodule "rust/rust-axum-course"]
 	path = rust/rust-axum-course
 	url = git@github.com:benmi3/rust-axum-course.git
+[submodule "rust/blog-base-rs"]
+	path = rust/blog-base-rs
+	url = git@github.com:benmi3/blog-base-rs.git
+[submodule "python/blog-base-py"]
+	path = python/blog-base-py
+	url = git@github.com:benmi3/blog-base-py.git
