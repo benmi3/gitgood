@@ -7,3 +7,6 @@
 [submodule "python/blog-base-py"]
 	path = python/blog-base-py
 	url = git@github.com:benmi3/blog-base-py.git
+[submodule "js/tailwind-nextjs-blog"]
+	path = js/tailwind-nextjs-blog
+	url = git@github.com:benmi3/tailwind-nextjs-blog.git
