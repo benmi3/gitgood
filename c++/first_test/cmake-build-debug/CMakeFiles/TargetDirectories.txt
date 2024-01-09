@@ -1,0 +1,3 @@
+/home/ben/Workspace/gitgood/c++/first_test/cmake-build-debug/CMakeFiles/first_test.dir
+/home/ben/Workspace/gitgood/c++/first_test/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/ben/Workspace/gitgood/c++/first_test/cmake-build-debug/CMakeFiles/rebuild_cache.dir
