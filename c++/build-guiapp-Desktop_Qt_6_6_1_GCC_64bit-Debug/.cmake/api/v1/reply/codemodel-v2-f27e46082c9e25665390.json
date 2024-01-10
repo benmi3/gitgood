@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-8fec340a3e4296ce714f.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "guiapp",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "guiapp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-guiapp-Debug-ae3cf863751cca00b92d.json",
+					"name" : "guiapp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "guiapp_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-guiapp_autogen-Debug-78b24d4792c38d9764d9.json",
+					"name" : "guiapp_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "guiapp_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-guiapp_autogen_timestamp_deps-Debug-17db6b7cd6b0e1914124.json",
+					"name" : "guiapp_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/ben/Workspace/gitgood/c++/build-guiapp-Desktop_Qt_6_6_1_GCC_64bit-Debug",
+		"source" : "/home/ben/Workspace/gitgood/c++/guiapp"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

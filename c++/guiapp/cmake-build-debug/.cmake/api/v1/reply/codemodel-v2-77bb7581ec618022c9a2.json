@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-1cf9312f78b953a4241c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "guiapp",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "guiapp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-guiapp-Debug-314f6ef6a2a4d78a7c45.json",
+					"name" : "guiapp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "guiapp_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-guiapp_autogen-Debug-0b5cc0a9f7a2c47184c2.json",
+					"name" : "guiapp_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "guiapp_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-guiapp_autogen_timestamp_deps-Debug-c4306d30e0b2f9ba9c78.json",
+					"name" : "guiapp_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/ben/Workspace/gitgood/c++/guiapp/cmake-build-debug",
+		"source" : "/home/ben/Workspace/gitgood/c++/guiapp"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

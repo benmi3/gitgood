@@ -1,0 +1,9 @@
+/home/ben/Workspace/gitgood/c++/build-guiapp-Desktop_Qt_6_6_1_GCC_64bit-Debug/CMakeFiles/guiapp.dir
+/home/ben/Workspace/gitgood/c++/build-guiapp-Desktop_Qt_6_6_1_GCC_64bit-Debug/CMakeFiles/edit_cache.dir
+/home/ben/Workspace/gitgood/c++/build-guiapp-Desktop_Qt_6_6_1_GCC_64bit-Debug/CMakeFiles/rebuild_cache.dir
+/home/ben/Workspace/gitgood/c++/build-guiapp-Desktop_Qt_6_6_1_GCC_64bit-Debug/CMakeFiles/list_install_components.dir
+/home/ben/Workspace/gitgood/c++/build-guiapp-Desktop_Qt_6_6_1_GCC_64bit-Debug/CMakeFiles/install.dir
+/home/ben/Workspace/gitgood/c++/build-guiapp-Desktop_Qt_6_6_1_GCC_64bit-Debug/CMakeFiles/install/local.dir
+/home/ben/Workspace/gitgood/c++/build-guiapp-Desktop_Qt_6_6_1_GCC_64bit-Debug/CMakeFiles/install/strip.dir
+/home/ben/Workspace/gitgood/c++/build-guiapp-Desktop_Qt_6_6_1_GCC_64bit-Debug/CMakeFiles/guiapp_autogen_timestamp_deps.dir
+/home/ben/Workspace/gitgood/c++/build-guiapp-Desktop_Qt_6_6_1_GCC_64bit-Debug/CMakeFiles/guiapp_autogen.dir

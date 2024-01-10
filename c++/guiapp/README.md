@@ -1,0 +1,1 @@
+This is mased on: https://github.com/craigmac/qt5-cpp-todo
