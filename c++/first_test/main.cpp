@@ -148,6 +148,54 @@ void struct_things(){
 	cout << myCar2.brand << " " << myCar2.model << " " << myCar2.year << "\n";
 }
 
+void myArrayTakingFunction(int myNumbers[5]) {
+	for (int i = 0; i < 5; i++) {
+		cout << myNumbers[i] << "\n";
+	}
+};
+
+int plusFunc(int x, int y) {
+	return x + y;
+};
+
+double plusFunc(double x, double y) {
+	return x + y;
+};
+
+class MyClass {       // The class
+	public:             // Access specifier
+		int myNum;        // Attribute (int variable)
+		string myString;  // Attribute (string variable)
+};
+
+class Vehicle {
+  public:
+    string brand = "Ford";
+    void honk() {
+      cout << "Tuut, tuut! \n" ;
+    }
+};
+
+class Car: public Vehicle {        // The class
+	public:          // Access specifier
+		string brand;  // Attribute
+		string model;  // Attribute
+		int year;      // Attribute
+		int speed(int maxSpeed);
+		Car(string x, string y, int z); // Constructor declaration
+};
+
+// Constructor definition outside the class
+Car::Car(string x, string y, int z) {
+	brand = x;
+	model = y;
+	year = z;
+};
+
+int Car::speed(int maxSpeed) {
+  return maxSpeed;
+}
+
 int main (int argc, char *argv[]) {
 	// You compile the program with g++ main.cpp
 	// Then run it with ./a.out/
@@ -288,6 +336,38 @@ int main (int argc, char *argv[]) {
 
 	// Output the new value of the food variable (Hamburger)
 	cout << food << "\n";
+	int myNumbers[5] = {10, 20, 30, 40, 50}; 
+	myArrayTakingFunction(myNumbers);
+	cout << "\n";
+	// Function Overloading example
+	// Function has same name,
+	// but takes different types,
+	// and returns different types
+	// Check out how the functions are made above
+	int myNum1 = plusFunc(8, 5);
+	double myNum2 = plusFunc(4.3, 6.26);
+	cout << "Int: " << myNum1 << "\n";
+	cout << "Double: " << myNum2;
+	cout << "\n";
+	// Class usecase
+	MyClass myObj;  // Create an object of MyClass
+
+	// Access attributes and set values
+	myObj.myNum = 15; 
+	myObj.myString = "Some text";
+
+	// Print attribute values
+	cout << myObj.myNum << "\n";
+	cout << myObj.myString; 
+	cout << "\n";
+	
+
+	// using class spesific functiona
+	Car myCar("BMW", "M3", 2024); // Create an object of Car
+	cout << myCar.speed(345); // Call the method with an argument
+	cout << myCar.brand << " " << myCar.model << " " << myCar.year << "\n";
+	myCar.honk();
+	cout << "\n";
 	// ------------------------------------- END
 	// Return useless 0
 	cout << "\n";
