@@ -7,3 +7,12 @@
 [submodule "js/tailwind-nextjs-blog"]
 	path = js/tailwind-nextjs-blog
 	url = git.benmi.me/benmi/tailwind-nextjs-blog.git
+[submodule "python/pihole_list_sorter"]
+	path = python/pihole_list_sorter
+	url = https://git.benmi.me/benmi/pihole_list_sorter.git
+[submodule "python/fastAPI_template"]
+	path = python/fastAPI_template
+	url = https://git.benmi.me/benmi/fastAPI_template.git
+[submodule "python/fastAPI_postgresql"]
+	path = python/fastAPI_postgresql
+	url = https://git.benmi.me/benmi/fastAPI_postgresql.git
