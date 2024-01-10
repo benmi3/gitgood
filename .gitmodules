@@ -16,3 +16,6 @@
 [submodule "python/fastAPI_postgresql"]
 	path = python/fastAPI_postgresql
 	url = https://git.benmi.me/benmi/fastAPI_postgresql.git
+[submodule "c++/pihole_list_sorter_in_cpp"]
+	path = c++/pihole_list_sorter_in_cpp
+	url = https://git.benmi.me/benmi/pihole_list_sorter_in_cpp
