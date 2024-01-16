@@ -19,3 +19,6 @@
 [submodule "c++/pihole_list_sorter_in_cpp"]
 	path = c++/pihole_list_sorter_in_cpp
 	url = https://git.benmi.me/benmi/pihole_list_sorter_in_cpp
+[submodule "c++/dns_list_sorter"]
+	path = c++/dns_list_sorter
+	url = https://git.benmi.me/benmi/dns_list_sorter.git
