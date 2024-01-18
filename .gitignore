@@ -14,4 +14,4 @@ Cargo.lock
 *.pdb
 
 #
-c++/**/a.out
+./c++/**/a.out
