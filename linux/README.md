@@ -1,0 +1,1 @@
+I will try do add small things I have learned, about general linux things here
