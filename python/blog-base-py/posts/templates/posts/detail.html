@@ -1,0 +1,28 @@
+{% extends "posts/base.html" %}
+
+{% block title %}Details of:{{ post.post_title }}{% endblock title %}
+
+{% block content %}
+    <div class="simple-container">
+        <h1>{{ post.post_title }}</h1>
+        <a>{{ post.post_text }}</a>
+        <h3><a href="{% url 'posts:category' post.category.id %}"> {{ post.category }} </a></h3>
+    </div>
+    <hr/>
+    <div class="hard-container" id="comment_box">
+        <form action="{% url 'posts:comment' post.id %}" method="post">
+            {% csrf_token %}
+            <label for="comment_text">Comment:</label>
+            <textarea name="comment_text" id="comment_text" required></textarea>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{% for comment in post.comment_set.all %}
+    <div class="comment-container" id="comment_box">
+        <a class="comment" href="{% url 'posts:detail' post.id %}">{{ comment.comment_author }}</a>
+        <p class="comment">{{ comment.comment_text }}</p>
+    </div>
+{% endfor %}
+
+{% endblock content %}

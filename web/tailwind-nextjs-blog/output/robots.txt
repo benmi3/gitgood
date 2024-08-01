@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://www.benmi.me/
+Sitemap: https://www.benmi.me//sitemap.xml
