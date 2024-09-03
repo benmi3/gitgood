@@ -1,0 +1,13 @@
+---
+exclude_paths:
+  - '.github/**'
+  - '.bingo/**'
+  - 'CHANGELOG.md'
+  - '**/CHANGELOG.md'
+  - 'changelog/**'
+  - '**/changelog/**'
+  - 'docs/**'
+  - '**/docs/**'
+  - '**/pkg/proto/**'
+
+...

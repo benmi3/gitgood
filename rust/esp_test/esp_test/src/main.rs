@@ -5,16 +5,18 @@ use esp_idf_svc::hal::prelude::Peripherals;
 use esp_idf_svc::{
     eventloop::EspSystemEventLoop,
     hal::{
-        i2c::{I2cConfig, I2cDriver},
+        i2c::{I2cConfig, I2cDriver, I2cError},
         io::EspIOError,
         prelude::*,
     },
     http::server::{Configuration, EspHttpServer},
 };
-
+use shtcx::sensor_class::Sht2Gen;
+use std;
+mod error;
 use log::info;
 use rgb_led::{RGB8, WS2812RMT};
-use shtcx::{self, shtc3, PowerMode};
+use shtcx::{self, shtc3, PowerMode, ShtC1, ShtCx};
 use std::{
     sync::{Arc, Mutex},
     thread::sleep,
@@ -89,14 +91,85 @@ fn main() -> Result<()> {
     // server.fn_handler("/", Method::Get, |request| {
     // ...
     //})?;
+    // Set the HTTP server
+    let mut server = EspHttpServer::new(&Configuration::default())?;
+    // http://<sta ip>/ handler
+    server.fn_handler(
+        "/",
+        Method::Get,
+        |request| -> core::result::Result<(), EspIOError> {
+            let html = index_html();
+            let mut response = request.into_ok_response()?;
+            response.write_all(html.as_bytes())?;
+            Ok(())
+        },
+    )?;
+
+    // http://<sta ip>/temperature handler
+    server.fn_handler(
+        "/temperature",
+        Method::Get,
+        move |request| -> core::result::Result<(), EspIOError> {
+            let temp_val = temp_sensor
+                .lock()
+                .unwrap()
+                .get_measurement_result()
+                .unwrap()
+                .temperature
+                .as_degrees_celsius();
+            let html = temperature(temp_val);
+            let mut response = request.into_ok_response()?;
+            response.write_all(html.as_bytes())?;
+            Ok(())
+        },
+    )?;
 
     // This is not true until you actually create one
     println!("Server awaiting connection");
 
     // Prevent program from exiting
     loop {
+        check_temp(&mut temp_sensor_main);
         sleep(Duration::from_millis(1000));
     }
+}
+
+fn check_temp_org(temp_sensor_main: &Arc<Mutex<ShtCx<Sht2Gen, I2cDriver<'_>>>>) {
+    temp_sensor_main
+        .lock()
+        .map_err(|_| "locking mutex failed")?
+        .start_measurement(PowerMode::NormalMode)
+        .map_err(|_| "locking mutex failed")?
+}
+
+fn check_temp(
+    temp_sensor_main: &mut Arc<Mutex<ShtCx<Sht2Gen, I2cDriver<'_>>>>,
+) -> Result<(), Box<dyn std::error::Error>> {
+    /*temp_sensor_main
+    .lock()
+    .unwrap()
+    .start_measurement(PowerMode::NormalMode)
+    .unwrap();*/
+    let mut temp_sensor_main = temp_sensor_main.lock().map_err(|e| {
+        eprintln!("Error locking temp_sensor_main: {}", e);
+        e
+    })?;
+
+    Ok(get_temp(temp_sensor_main)?)
+}
+
+fn get_temp(
+    mut temp_sensor_main: std::sync::MutexGuard<'_, ShtCx<Sht2Gen, I2cDriver<'_>>>,
+) -> Result<(), shtcx::Error<I2cError>> {
+    let return_string = match temp_sensor_main
+        .start_measurement(PowerMode::NormalMode)
+        .map_err(|e| {
+            eprintln!("Error starting measurement: {}", e);
+            e
+        }) {
+        Ok(it) => return Ok(it),
+        Err(err) => return Err(err),
+    };
 }
 
 fn templated(content: impl AsRef<str>) -> String {

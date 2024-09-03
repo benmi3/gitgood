@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package com.owncloud.ocis.hello.v0;
+
+option go_package = "github.com/owncloud/ocis-hello/pkg/proto/v0;proto";
+
+service Hello {
+	rpc Greet(GreetRequest) returns (GreetResponse);
+}
+
+message GreetRequest {
+	string name = 1;
+}
+
+message GreetResponse {
+	string message = 1;
+}

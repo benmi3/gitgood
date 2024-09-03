@@ -1,0 +1,15 @@
+coverage.out
+checkstyle.xml
+.drone.yml
+
+/bin
+/dist
+/hugo
+
+/node_modules
+/assets
+/.idea
+/vendor
+/test-results/
+/playwright-report/
+/playwright/.cache/
