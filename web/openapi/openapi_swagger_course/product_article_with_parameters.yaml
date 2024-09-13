@@ -1,0 +1,98 @@
+openapi: 3.0.0
+info: 
+  title: h plus spotrts api
+  version: 1.0.0
+tags:
+  - name: Article
+    description: Articles for for sport 
+paths:
+  /product/{productId}:
+    get:
+      parameters:
+        - in: path
+          name: productId
+          required: true
+          schema:
+            type: integer
+            example: 1234
+        - in: header
+          name: customer-security-header
+          required: false
+          schema:
+            type: integer
+            example: 1234-4322-312
+      responses:
+        200:
+          description: This is a list of products in the catalog
+          content:
+            application/json:
+              schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 212
+                    name:
+                      type: string
+                      example: Lemon Water
+  /product:
+    get:
+      parameters:
+        - in: query
+          name: pageNumber
+          description: Page number to return
+          required: false
+          schema:
+            type: integer
+            example: 1
+        - in: query
+          name: pageSize
+          description: Number of results in the page
+          required: false
+          schema:
+            type: integer
+            example: 50
+            maximum: 100
+      responses:
+        200:
+          description: This is a list of products in the catalog
+          content:
+            application/json:
+              schema:
+                  type: array
+                  items:
+                    properties:
+                      id:
+                        type: integer
+                        example: 400
+                      name:
+                        type: string
+                        example: Lemon Water
+  # -------- For tests
+  /article:
+    get:
+      tags:
+        - Article
+      responses:
+        200:
+          description: Page of Articles
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    createdDate:
+                      type: string
+                      format: date
+                    tagline:
+                      type: string
+                    content:
+                      type: string
+                    category:
+                      type: string
+                    tags:
+                      type: array
+                      items:
+                        type: string

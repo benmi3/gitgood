@@ -1,0 +1,52 @@
+openapi: 3.0.0
+info: 
+  title: h plus spotrts api
+  version: 1.0.0
+tags:
+  - name: Article
+    description: Articles for for sport 
+paths:
+  /product:
+    get:
+      responses:
+        200:
+          description: This is a list of products in the catalog
+          content:
+            application/json:
+              schema:
+                  type: array
+                  items:
+                    properties:
+                      id:
+                        type: integer
+                        example: 400
+                      name:
+                        type: string
+                        example: Lemon Water
+  /article:
+    get:
+      tags:
+        - Article
+      responses:
+        200:
+          description: Page of Articles
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    createdDate:
+                      type: string
+                      format: date
+                    tagline:
+                      type: string
+                    content:
+                      type: string
+                    category:
+                      type: string
+                    tags:
+                      type: array
+                      items:
+                        type: string
