@@ -39,8 +39,8 @@
     "@rollup/plugin-node-resolve": "^15.0.2",
     "@rollup/plugin-replace": "^5.0.2",
     "archiver": "^5.3.1",
-    "axios": "^1.6.0",
-    "chromedriver": "^113.0.0",
+    "axios": "^1.7.7",
+    "chromedriver": "^119.0.1",
     "core-js": "3.30.2",
     "cross-env": "^7.0.3",
     "debounce": "^1.2.0",
@@ -67,7 +67,7 @@
     "rollup-plugin-vue": "^6.0.0",
     "swagger-vue-generator": "^1.0.6",
     "url-search-params-polyfill": "^8.1.0",
-    "vue-template-compiler": "^2.7.14",
+    "vue-template-compiler": "^2.7.16",
     "xml-js": "^1.6.11"
   },
   "browserslist": [
