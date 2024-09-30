@@ -22,3 +22,6 @@
 [submodule "c++/dns_list_sorter"]
 	path = c++/dns_list_sorter
 	url = https://git.benmi.me/benmi/dns_list_sorter.git
+[submodule "go/applied-concurrency-in-go-3164282"]
+	path = go/applied-concurrency-in-go-3164282
+	url = https://github.com/LinkedInLearning/applied-concurrency-in-go-3164282.git
