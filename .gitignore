@@ -15,3 +15,7 @@ Cargo.lock
 
 #
 c++/snippets/a.out
+
+# OS things
+.DS_Store
+	
