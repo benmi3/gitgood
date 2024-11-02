@@ -16,3 +16,21 @@ export const fetchMarkdownPosts = async () => {
 
   return allPosts;
 };
+export const fetchPostCategories = async () => {
+  const allPostFiles = import.meta.glob('/src/routes/blog/*.md');
+  const iterablePostFiles = Object.entries(allPostFiles);
+  const categories: string[] = [];
+  await Promise.all(
+    iterablePostFiles.map(async ([_, resolver]) => {
+      const { metadata } = await resolver();
+      for (const category of metadata.category) {
+        if (categories.indexOf(category) === -1) {
+          categories.push(category);
+        }
+      }
+    })
+  );
+
+  return categories;
+};
+
