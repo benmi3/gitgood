@@ -4,15 +4,20 @@
 
 <h1>Blog</h1>
 
-<ul>
+<ul class="grid grid-flow-row-dense grid-cols-3 grid-rows-3">
 	{#each data.posts as post}
-		<li>
-			<h2>
-				<a href={post.path}>
+		<a href={post.path}>
+			<li
+				class="border-2 border-zinc-900 bg-white p-5 text-black antialiased hover:border-yellow-500 dark:bg-black dark:text-white"
+			>
+				<h2>
 					{post.meta.title}
-				</a>
-			</h2>
-			Published {post.meta.date}
-		</li>
+				</h2>
+				{#if post.meta.image}
+					<img src={post.meta.image} alt="img" />
+				{/if}
+				Published {post.meta.date}
+			</li>
+		</a>
 	{/each}
 </ul>

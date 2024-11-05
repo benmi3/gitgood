@@ -25,7 +25,9 @@ export const fetchPostsFilters = async (filter: string) => {
       if (metadata[filter] != undefined) {
         if (Array.isArray(metadata[filter])) {
           for (const item of metadata[filter]) {
-            filterArr.push(item);
+            if (filterArr.indexOf(item) === -1) {
+              filterArr.push(item);
+            }
           }
         } else {
           filterArr.push(metadata[filter]);
@@ -74,23 +76,5 @@ export const fetchPostsFiltered = async (filter: string, value: string) => {
   );
 
   return allPosts;
-};
-
-export const fetchPostCategories = async () => {
-  const allPostFiles = import.meta.glob('/src/routes/blog/*.md');
-  const iterablePostFiles = Object.entries(allPostFiles);
-  const categories: string[] = [];
-  await Promise.all(
-    iterablePostFiles.map(async ([path, resolver]) => {
-      const { metadata } = await resolver();
-      for (const category of metadata.category) {
-        if (categories.indexOf(category) === -1) {
-          categories.push(category);
-        }
-      }
-    })
-  );
-
-  return categories;
 };
 
