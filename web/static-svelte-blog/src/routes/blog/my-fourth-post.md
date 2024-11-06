@@ -1,6 +1,6 @@
 ---
 title: My test post
-date: '2024-11-01'
+date: '2024-11-04'
 category: ["Test", "Thoughts"]
 image: "picture.jpg"
 ---

@@ -5,6 +5,12 @@
 	import Footer from '$lib/components/Footer.svelte';
 </script>
 
-<Header></Header>
-{@render children()}
-<Footer></Footer>
+<div class="flex h-screen flex-col">
+	<Header></Header>
+	<div
+		class="flex flex-1 place-content-center overflow-auto bg-white text-black antialiased dark:bg-gray-950 dark:text-white"
+	>
+		{@render children()}
+	</div>
+	<Footer></Footer>
+</div>
