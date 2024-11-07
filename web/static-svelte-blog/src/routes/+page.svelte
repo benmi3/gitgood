@@ -1,7 +1,20 @@
-<h1>Welcome to the blog</h1>
-<p>
-	This blog is made for fun!
-	<br />
-	Thank you for looking at it
-</p>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script>
+	export let data;
+</script>
+
+<div>
+	<h1 class="text-4xl">Welcome to the blog <br /> This is the latest post:</h1>
+	<ul>
+		<a href={data.post.path}>
+			<li>
+				<h2 class="text-2xl">
+					{data.post.meta.title}
+				</h2>
+				{#if data.post.meta.image}
+					<img src={data.post.meta.image} alt="img" />
+				{/if}
+				Published {data.post.meta.date}
+			</li>
+		</a>
+	</ul>
+</div>
