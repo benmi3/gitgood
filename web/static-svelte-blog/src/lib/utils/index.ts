@@ -1,5 +1,5 @@
 const MAX_POST_PER_PAGE: number = 50;
-export const fetchAllPosts = async (pagenum: number) => {
+export const fetchAllPosts = async (offset: number, limit: number) => {
   const allPostFiles = import.meta.glob('/src/routes/blog/*.md');
   const iterablePostFiles = Object.entries(allPostFiles);
   const allPosts = await Promise.all(
@@ -10,14 +10,15 @@ export const fetchAllPosts = async (pagenum: number) => {
       return {
         meta: metadata,
         path: postPath,
-        page: Math.trunc(iterablePostFiles.length / MAX_POST_PER_PAGE)
+        total: iterablePostFiles.length
       };
     })
   );
-  let startNum: number = pagenum * MAX_POST_PER_PAGE;
-  let endNum: number = startNum + MAX_POST_PER_PAGE;
-
-  return allPosts.slice(startNum, endNum);
+  const sortedPosts = allPosts.sort((a, b) => {
+    return new Date(b.meta.date) - new Date(a.meta.date);
+  });
+  let amount = limit == 0 ? MAX_POST_PER_PAGE : limit
+  return sortedPosts.slice(offset, offset + amount);
 };
 export const fetchPostsFilters = async (filter: string) => {
   const allPostFiles = import.meta.glob('/src/routes/blog/*.md');

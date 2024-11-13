@@ -1,12 +1,28 @@
-<script>
-	export let data;
+<script lang="ts">
+	import type { PageData } from './$types';
+
+	let { data }: { data: PageData } = $props();
+	let posts = $state(data.posts);
+
+	async function getMorePosts() {
+		const response = await fetch(`/api/posts?offset=` + posts.length.toString());
+		const newposts = await response.json();
+		if (posts) {
+			for (const post of newposts) {
+				posts.push(post);
+			}
+			return;
+		}
+		return;
+	}
 </script>
 
 <div>
 	<h1>Blog</h1>
 	<p>Here are all the blogpost listed in the order they where published</p>
+
 	<ul class="grid grid-flow-row-dense grid-cols-3 grid-rows-3">
-		{#each data.posts as post}
+		{#each posts as post}
 			<a href={post.path}>
 				<li
 					class="border-2 border-zinc-900 bg-white p-5 text-black antialiased hover:border-yellow-500 dark:bg-black dark:text-white"
@@ -22,4 +38,5 @@
 			</a>
 		{/each}
 	</ul>
+	<button onclick={getMorePosts} type="button" class="self-center">Load More Posts</button>
 </div>

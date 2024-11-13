@@ -1,8 +1,10 @@
 export const load = async ({ fetch }) => {
-  const response = await fetch(`/api/post`);
-  const post = await response.json();
-
+  const response = await fetch(`/api/posts?limit=1`);
+  const res = await response.json();
   return {
-    post
+    post: res[0].meta,
+    path: res[0].path,
+    total: res[0].total
   };
 };
+
