@@ -1,5 +1,7 @@
-<script>
-	export let data;
+<script lang="ts">
+	import type { PageData } from './$types';
+
+	let { data }: { data: PageData } = $props();
 </script>
 
 <article>
@@ -10,6 +12,7 @@
 	{/if}
 	<div>
 		<svelte:component this={data.content} />
+		<!-- This generate a depreciated warning, so want to fix it when I can -->
 	</div>
 	<ul
 		class="flex border-2 border-zinc-900 bg-white p-1 text-black antialiased dark:bg-black dark:text-white"
