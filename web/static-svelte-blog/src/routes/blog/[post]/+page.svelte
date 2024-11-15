@@ -11,7 +11,7 @@
 		<img class="h-200 w-300 object-contain" src={data.image} alt="img" />
 	{/if}
 	<div>
-		<svelte:component this={data.content} />
+		<data.content />
 		<!-- This generate a depreciated warning, so want to fix it when I can -->
 	</div>
 	<ul
