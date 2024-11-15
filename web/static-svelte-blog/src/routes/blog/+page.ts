@@ -7,7 +7,7 @@ export const load: PageLoad = async ({ fetch }) => {
   //   offset = 0;
   // }
   // TODO: add paging
-  const response = await fetch(`/api/posts?limit=1`);
+  const response = await fetch(`/api/posts`);
   const posts = await response.json();
   if (posts) {
     return {

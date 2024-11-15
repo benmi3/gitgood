@@ -1,3 +1,10 @@
+<script>
+	export let links = [];
+	// {#each links as link}
+	// 				<li><a href={link.url}>{link.text}</a></li>
+	// 			{/each}
+</script>
+
 <footer class="bottom-0 flex h-10 place-content-center bg-zinc-800 p-4 text-white shadow-lg">
 	<nav>
 		<ul class="flex justify-around">

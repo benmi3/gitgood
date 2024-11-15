@@ -83,3 +83,17 @@ export const fetchPostsFiltered = async (filter: string, value: string) => {
   return allPosts;
 };
 
+export const fetchAllLinks = async () => {
+  const allPostFiles = import.meta.glob('/src/routes/contact/contact.md');
+  const iterablePostFiles = Object.entries(allPostFiles);
+
+  const allPosts = await Promise.all(
+    iterablePostFiles.map(async ([path, resolver]) => {
+      const { metadata } = await resolver();
+      return metadata.links
+    })
+  );
+
+  return allPosts;
+
+}

@@ -3,6 +3,12 @@
 	let { children } = $props();
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+
+	async function getLinks() {
+		const linkRes = await fetch('/api/contact');
+		const links = await linkRes.json();
+		return links;
+	}
 </script>
 
 <div class="flex h-screen flex-col">
@@ -12,5 +18,5 @@
 	>
 		{@render children()}
 	</div>
-	<Footer></Footer>
+	<Footer links={await getLinks}></Footer>
 </div>

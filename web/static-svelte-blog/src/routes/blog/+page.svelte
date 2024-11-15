@@ -3,6 +3,7 @@
 
 	let { data }: { data: PageData } = $props();
 	let posts = $state(data.posts);
+	let displayMore = $state(posts[0].total != posts.length);
 
 	async function getMorePosts() {
 		const response = await fetch(`/api/posts?offset=` + posts.length.toString());
@@ -11,6 +12,7 @@
 			for (const post of newposts) {
 				posts.push(post);
 			}
+			displayMore = posts[0].total != posts.length;
 			return;
 		}
 		return;
@@ -38,5 +40,7 @@
 			</a>
 		{/each}
 	</ul>
-	<button onclick={getMorePosts} type="button" class="self-center">Load More Posts</button>
+	{#if displayMore}
+		<button onclick={getMorePosts} type="button" class="self-center">Load More Posts</button>
+	{/if}
 </div>
