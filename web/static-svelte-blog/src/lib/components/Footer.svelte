@@ -1,5 +1,10 @@
 <script>
-	export let links = [];
+	async function getLinks() {
+		const linkRes = await fetch('/api/contact');
+		const links = await linkRes.json();
+		return links;
+	}
+	const links = getLinks();
 	// {#each links as link}
 	// 				<li><a href={link.url}>{link.text}</a></li>
 	// 			{/each}
@@ -20,6 +25,9 @@
 			<li class="pr-4">
 				<a href="/contact" class="hover:text-yellow-500">Contact</a>
 			</li>
+			{#each links as link}
+				<li><a href={link.url}>{link.text}</a></li>
+			{/each}
 		</ul>
 	</nav>
 </footer>
