@@ -1,10 +1,23 @@
-<script>
+<script lang="ts">
+	import { onMount } from 'svelte';
+	interface link {
+		url: string;
+		text: string;
+	}
 	async function getLinks() {
 		const linkRes = await fetch('/api/contact');
-		const links = await linkRes.json();
+		const reslinks = await linkRes.json();
+		for (const reslink in reslinks) {
+			const parsedLink: link = JSON.parse(reslink);
+			links.push(parsedLink);
+		}
 		return links;
 	}
-	const links = getLinks();
+
+	const links: link[] = [];
+	onMount(async () => {
+		getLinks();
+	});
 	// {#each links as link}
 	// 				<li><a href={link.url}>{link.text}</a></li>
 	// 			{/each}
