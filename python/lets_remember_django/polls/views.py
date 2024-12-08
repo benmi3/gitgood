@@ -1,11 +1,11 @@
-from django.shortcuts import render, get_object_or_404
-
-from .models import Question, Choice
+from django.db.models import F
 
 # Create your views here.
-from django.http import HttpResponse, HttpRequest, Http404
+from django.http import Http404, HttpRequest, HttpResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
-from django.db.models import F
+
+from .models import Choice, Question
 
 
 def index(request: HttpRequest):
@@ -24,9 +24,11 @@ def detail(request: HttpRequest, question_id: int) -> HttpResponse:
 
 
 def results(request: HttpRequest, question_id: int) -> HttpResponse:
-    print(request)
-    response = b"You're looking at the results of questions %s."
-    return HttpResponse(response % question_id)
+    # print(request)
+    # response = b"You're looking at the results of questions %s."
+    # return HttpResponse(response % question_id)
+    question = get_object_or_404(Question, pk=question_id)
+    return render(request, "polls/results.html", {"question": question})
 
 
 def vote(request: HttpRequest, question_id: int) -> HttpResponse:
@@ -47,4 +49,4 @@ def vote(request: HttpRequest, question_id: int) -> HttpResponse:
         # You need to alwasy return an HttpReponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a user
         # hits the Back button
-        return HttpResponse(reverse("polls:results", args=(q.id)))
+        return HttpResponseRedirect(reverse("polls:results", args=(q.id)))
