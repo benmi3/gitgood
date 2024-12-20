@@ -1,10 +1,17 @@
 from django.db.models import F
 
 # Create your views here.
-from django.http import Http404, HttpRequest, HttpResponse, HttpResponseRedirect
+from django.http import (
+    Http404,
+    HttpRequest,
+    HttpResponse,
+    HttpResponseRedirect,
+    JsonResponse,
+)
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
+from rest_framework.views import APIView
 from django.utils import timezone
 from .models import Choice, Question
 
@@ -51,3 +58,15 @@ def vote(request: HttpRequest, question_id: int) -> HttpResponse:
         # with POST data. This prevents data from being posted twice if a user
         # hits the Back button
         return HttpResponseRedirect(reverse("polls:results", args=(q.id)))
+
+
+class RestTestView(APIView):
+    def get(self, request):
+        print(request)
+        res = {"msg": "get", "who": 1}
+        return JsonResponse(res)
+
+    def post(self, request):
+        print(request)
+        res = {"msg": "post", "who": 2}
+        return JsonResponse(res)
