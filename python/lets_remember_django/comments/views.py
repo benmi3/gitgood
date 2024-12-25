@@ -17,7 +17,7 @@ from .models import Comment
 
 
 class IndexView(generic.ListView):
-    template_name = "polls/index.html"
+    template_name = "comments/index.html"
     context_object_name = "latest_question_list"
 
     def get_queryset(self):
@@ -39,17 +39,19 @@ class ResultsView(generic.DetailView):
     template_name = "comments/results.html"
 
 
-def vote(request: HttpRequest, question_id: int) -> HttpResponse:
+def vote(request: HttpRequest, comment_id: int) -> HttpResponse:
     # print(request)
     # return HttpResponse(b"You're voting on question %s." % question_id)
-    q = get_object_or_404(Comment, pk=question_id)
+    req_ref = request.headers["Referer"]
+    # TODO: implement this, change name from vote to postComment
+    c = get_object_or_404(Comment, pk=comment_id)
     try:
-        selected_choice = q.choice_set.get(pk=request.POST["chice"])
+        selected_choice = c.choice_set.get(pk=request.POST["chice"])
     except (KeyError, Comment.DoesNotExist):
         return render(
             request,
             "comments/detail.html",
-            {"question": q, "error_message": "You didn't select a choice."},
+            {"question": c, "error_message": "You didn't select a choice."},
         )
     else:
         selected_choice.votes = F("votes") + 1
@@ -57,4 +59,16 @@ def vote(request: HttpRequest, question_id: int) -> HttpResponse:
         # You need to alwasy return an HttpReponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a user
         # hits the Back button
-        return HttpResponseRedirect(reverse("comments:results", args=(q.id)))
+        return HttpResponseRedirect(reverse("comments:results", args=(c.id)))
+
+
+class RestTestView(APIView):
+    def get(self, request):
+        print(request)
+        res = {"msg": "get", "who": 1}
+        return JsonResponse(res)
+
+    def post(self, request):
+        print(request)
+        res = {"msg": "post", "who": 2}
+        return JsonResponse(res)
