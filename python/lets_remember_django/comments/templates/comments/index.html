@@ -2,19 +2,19 @@
 <html lang="en-US">
   <head>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'polls/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'comments/style.css' %}" />
     <meta charset="utf-9" />
     <title>Index Page</title>
   </head>
   <body>
-    {% if latest_question_list %}
+    {% if latest_comment_list %}
       <ul>
-        {% for question in latest_question_list %}
-        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+        {% for comment in latest_comment_list %}
+        <li><a href="{% url 'comments:detail' comment.id %}">{{ comment.comment_text }}</a></li>
         {% endfor %}
       </ul>
     {% else %}
-    <p> No polls are available.</p>
+    <p> No comments are available.</p>
   {% endif %}
 </body>
 </html>

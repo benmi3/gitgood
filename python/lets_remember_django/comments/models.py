@@ -10,9 +10,10 @@ class Comment(models.Model):
     main_referance = models.URLField(
         primary_key=True, null=False, default="https://www.benmi.me"
     )
-    comment_text = models.CharField(max_length=1000)
+    comment_text = models.TextField(max_length=1000)
     pub_date = models.DateTimeField("date published")
     parent_comment = models.ForeignKey("self", on_delete=models.CASCADE, null=True)
+    user_id = models.BigIntegerField(null=False, default=0)
 
     def __str__(self) -> str:
         # Lets turn it into an actual string before return it
