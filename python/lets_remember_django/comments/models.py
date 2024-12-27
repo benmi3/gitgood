@@ -7,7 +7,10 @@ from django.contrib import admin
 
 # Create your models here.
 class Comment(models.Model):
-    comment_text = models.CharField(max_length=500)
+    main_referance = models.URLField(
+        primary_key=True, null=False, default="https://www.benmi.me"
+    )
+    comment_text = models.CharField(max_length=1000)
     pub_date = models.DateTimeField("date published")
     parent_comment = models.ForeignKey("self", on_delete=models.CASCADE, null=True)
 
